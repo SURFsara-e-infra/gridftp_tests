@@ -1,4 +1,5 @@
-Version: 2013-06-05 - Removed tarrball and replaced this with a repo file. Updated information.
+Version: 2013-06-24 - Fixed documentation and adapted the script for a new feature in globus gridftp which does not allow the anonymous user to be root.
+Version: 2013-06-05 - Removed tarball and replaced this with a repo file. Updated information.
 Version: 2011-04-07 - gt5.0.3 gridftp server. removed solaris stuff.
 Version: 2009-07-24 - some info on gridftp performance tuning added
 Version: 2009-07-23 - test_* scripts added
@@ -33,9 +34,6 @@ The gridftp software can be installed by running:
 
 ./gridftp.sh install
 
-This should be done on the server as well as the tested client.
-On Scientific Linux 6.0 the package openssl098e must be installed.
-
 
 Starting and Stopping the gridftp server
 ========================================
@@ -52,10 +50,13 @@ On the host of which the throughput needs to be tested, the following scripts
 are important:
 
 settings.sh
-  This file contains variables that are common to the scripts, like
-  the number of files to test with and the name of the server.
-  You need to set at least the server name or IP address, and the 
-  path where the local storage is mounted.
+  This file contains variables that are common to the scripts. You need to 
+  specify the following:
+  REMOTE_SERVER - the name or ip number of the remote gridftp server.
+  STORAGE_PATH - the path to the place where on this machine the test files
+                 are stored.
+  USER - the (non root) name of the user that is used for anonymous gridftp 
+         access.
 
 test_prepare.sh
   This script creates files to test with, both locally and on the server.
@@ -68,17 +69,10 @@ test_single_thread.sh
 test_start.sh
   This is the main test script. Don't forget to run test_prepare.sh 
   first! test_start.sh starts a number of child processes
-  that each do reading or writing of multiple files. 
-  There are three transfer types: 
-  - local reading and transfer over the external network;
-  - local reading and transfer over the internal network;
-  - local writing of a testfile transferred over the external network.
-
-  These three transfer types are started in a ratio of 1:1:1,
-  so one external read, one internal read and one write, or 
-  two external reads, two internal reads and two writes etcetera.
+  that each do reading or writing of multiple files. This script
+  starts up read and write processes in a ratio of 2:1.
   How many of these transfer sets are done simultanueously is 
-  determined by the variable NUMBER_OF_2R1W_OPERATIONS.
+  determined by the variable NUMBER_OF_2R1W_OPERATIONS (default is 4).
 
   When the first child process is finished with all transfers, all 
   other childs are terminated, and then some calculations are done 
@@ -110,6 +104,23 @@ all attached nodes need to run test_start.sh simultaneously!
 Each of the attached nodes should talk to a different gridftp server, 
 to ensure that the server does not become a bottleneck.
 
+A typical test
+==============
+
+Typically you need to perform the following steps.
+
+On this node and the remote server:
+1. ./gridftp.sh install
+
+On this node only:
+1. provide settings.sh on this nodewith the proper values for 
+REMOTE_SERVER
+STORAGE_PATH
+USER
+2. ./test_prepare.sh
+3. ./test_start.sh
+4. Have a coffee break
+5. Collect the output of the script.
 
 Performance tuning
 ==================

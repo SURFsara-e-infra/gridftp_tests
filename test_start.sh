@@ -4,14 +4,14 @@
 
 # Number of transfers is not necesserily the same as the number of files.
 TRANSFERS=400
-NUMBER_OF_2R1W_OPERATIONS=1
+NUMBER_OF_2R1W_OPERATIONS=4
 
 rm -f test_results*.txt
 
 for i in `seq 1 $NUMBER_OF_2R1W_OPERATIONS` ; do
-  ./test_child.sh $SERVER_IF_EXTERNAL read  $TRANSFERS > test_results_read_external-$i.txt &
-  ./test_child.sh $SERVER_IF_INTERNAL read  $TRANSFERS > test_results_read_internal-$i.txt &
-  ./test_child.sh $SERVER_IF_EXTERNAL write $TRANSFERS > test_results_write_external-$i.txt &
+  ./test_child.sh $REMOTE_SERVER read  $TRANSFERS > test_results_read_first-$i.txt &
+  ./test_child.sh $REMOTE_SERVER read  $TRANSFERS > test_results_read_second-$i.txt &
+  ./test_child.sh $REMOTE_SERVER write $TRANSFERS > test_results_write_first-$i.txt &
 done
 
 wait
@@ -36,9 +36,9 @@ calculate_throughput () {
   echo "Throughput for transfer type $TRANSFER_TYPE: $THROUGHPUT MB/s."
 }
 
-calculate_throughput read_external
-calculate_throughput read_internal
-calculate_throughput write_external
+calculate_throughput read_first
+calculate_throughput read_second
+calculate_throughput write_first
 
 echo -n "Cleaning up... "
 rm -f $STORAGE_PATH/$TESTFILE-proc*-*

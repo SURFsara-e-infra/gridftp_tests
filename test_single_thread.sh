@@ -8,8 +8,7 @@
 # Load lots of variables
 . settings.sh
 
-# You may want to change this value to speak to the right interface of the server (internal, external).
-SERVER=$SERVER_IF_EXTERNAL
+SERVER=$REMOTE_SERVER
 
 # Number of transfers (less or equal to $FILES please)
 TRANSFERS=3

@@ -12,8 +12,6 @@ SERVER=$1
 # How many transfers should we do? Again, test_start.sh will tell us.
 TRANSFERS=$3
 
-. ${GLOBUS_LOCATION}/etc/globus-user-env.sh
-
 usage () {
   echo "This script is supposed to be called from test_start.sh."
   echo "Usage:"

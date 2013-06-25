@@ -39,11 +39,12 @@ install () {
 
 start () {
     . /usr/share/globus/globus-script-initializer
+    . settings.sh
     echo 1>&2 -n "Starting globus-gridftp server..."
     DATE=`date '+%Y%m%d%H%M%S'`
     pid=`ps -A | grep globus | awk '{print $1}'`
     if [ -z $pid ]; then
-        globus-gridftp-server -anonymous-user root -disable-usage-stats -aa -Z ${CURDIR}/gridftplog_${DATE}.txt -S -p 5000
+        globus-gridftp-server -anonymous-user $USER -disable-usage-stats -aa -Z ${CURDIR}/gridftplog_${DATE}.txt -S -p 5000
         if [ "x$?" == "x0" ]; then
             echo 1>&2 "globus-gridftp-server started successfully"
         else
