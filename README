@@ -107,20 +107,25 @@ to ensure that the server does not become a bottleneck.
 A typical test
 ==============
 
-Typically you need to perform the following steps.
+Typically you need to perform the following steps. This needs to be in place on two servers. Here server1 is the server from where the tests are going to be 
+run. Server2 just performs as the remote gridftp server.
 
-On this node and the remote server:
+On server2:
 1. ./gridftp.sh install
+2. set the correct value for USER in settings.sh
+3. ./gridftp.sh start
 
-On this node only:
-1. provide settings.sh on this nodewith the proper values for 
+On server1:
+1. ./gridftp.sh install
+2. provide settings.sh on this nodewith the proper values for 
 REMOTE_SERVER
 STORAGE_PATH
 USER
-2. ./test_prepare.sh
-3. ./test_start.sh
-4. Have a coffee break
-5. Collect the output of the script.
+3. ./gridftp.sh start
+4. ./test_prepare.sh
+5. ./test_start.sh
+6. Have a coffee break
+7. Collect the output of the script.
 
 Performance tuning
 ==================
