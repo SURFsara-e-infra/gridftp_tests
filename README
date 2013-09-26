@@ -93,12 +93,6 @@ test_child.sh
   from the ram disk of the server, /dev/shm ; again to avoid a 
   remote bottleneck.
 
-gridftplog.py
-  This script can be used to get statistics by parsing the gridftp
-  server log files. This method however may not produce reliable
-  results, especially not when the gridftp server has been running
-  for a long time.
-
 Please beware, that if the storage is shared by more than one node,
 all attached nodes need to run test_start.sh simultaneously! 
 Each of the attached nodes should talk to a different gridftp server, 

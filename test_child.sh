@@ -58,7 +58,8 @@ test_write () {
   # Client write test
   timer_start
   for i in `seq 1 $TRANSFERS` ; do
-    $GLOBUS_COMMAND $GLOBUS_PARAMETERS ftp://$SERVER:5000$SERVER_RAMDISK/$TESTFILE $STORAGE_PATH/$TESTFILE-proc$$-$i
+    j=`expr $i % $FILES`
+    $GLOBUS_COMMAND $GLOBUS_PARAMETERS ftp://$SERVER:5000$SERVER_RAMDISK/$TESTFILE $STORAGE_PATH/$TESTFILE-proc$$-$j
     # In the loop because this child may get killed and we want the last values.
     timer_stop
   done

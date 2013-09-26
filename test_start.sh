@@ -3,6 +3,7 @@
 . settings.sh
 
 # Number of transfers is not necesserily the same as the number of files.
+# For the duration test, please set this to a high number like 400000 or so.
 TRANSFERS=400
 NUMBER_OF_2R1W_OPERATIONS=4
 
