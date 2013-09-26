@@ -93,6 +93,9 @@ test_child.sh
   from the ram disk of the server, /dev/shm ; again to avoid a 
   remote bottleneck.
 
+result.sh
+  Script that can be used to print intermediate results.
+
 Please beware, that if the storage is shared by more than one node,
 all attached nodes need to run test_start.sh simultaneously! 
 Each of the attached nodes should talk to a different gridftp server, 
@@ -117,9 +120,11 @@ STORAGE_PATH
 USER
 3. ./gridftp.sh start
 4. ./test_prepare.sh
-5. ./test_start.sh
-6. Have a coffee break
-7. Collect the output of the script.
+5. Have a long long coffee break
+6. ./test_start.sh
+7. Have a long coffee break
+8. You may run result.sh, just to get an idea about the performance.
+9. Collect the output of the test_start.sh script.
 
 Performance tuning
 ==================
