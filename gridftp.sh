@@ -72,7 +72,7 @@ stop () {
 }
 
 status () {
-    pid=`ps -A | grep globus | awk '{print $1}'`
+    pid=`ps -A | grep globus-gridftp | awk '{print $1}'`
     if [ ! -z $pid ]; then
         echo 1>&2 "globus-gridtp-server is running"
     else
