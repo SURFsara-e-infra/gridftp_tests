@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CURDIR=`pwd`
-REPORPM=`cd ${CURDIR}; ls Glob*rpm`
+REPORPM=`cd ${CURDIR}; ls glob*rpm`
 
 clean () {
     stop
