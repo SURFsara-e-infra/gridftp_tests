@@ -118,7 +118,7 @@ run. **Server2** just performs as the remote gridftp server.
 On server2:
 
  1. ./gridftp.sh install
- 1. set the correct value for USER in settings.sh
+ 1. set the correct value for **USER** in settings.sh and set **STORAGE_PATH** and **REMOTE_SERVER** to some dummy values. 
  1. ./gridftp.sh start
  
 On server1:
