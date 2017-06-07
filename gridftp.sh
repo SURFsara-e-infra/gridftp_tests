@@ -33,6 +33,8 @@ install () {
     rpm -i --force ${REPORPM}
     
     yum install -y globus-gridftp
+    yum install -y psmisc
+    yum install -y bc
     
     echo ". /usr/share/globus/globus-script-initializer" >>$CURDIR/setenv.sh
 }
