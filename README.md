@@ -139,7 +139,7 @@ Performance tuning
 
 Globus gridftp has a number of parameters that influence its performance.
 Information about this can be found on these pages:
-[http://www.globus.org/tookit/docs/latest-stable/gridftp/#gridftp](URL)
+[http://toolkit.globus.org/toolkit/docs/latest-stable/gridftp/#gridftp](URL)
 
 In <u>settings.sh</u>, there are a few variables for tuning:
 
@@ -150,13 +150,13 @@ In <u>settings.sh</u>, there are a few variables for tuning:
   several streams, so that only one stream is reduced in speed.
   (`globus-url-copy -p`)
 
-**TCP_BUFFERSIZE=179200**
+**TCP_BUFFERSIZE=1048576**
 
   >This value depends on the network bandwidth. Use this formula:
   [TCP Buffer size (bytes) = 1024 * Bandwidth (Mbs) * Round trip delay time(ms) / 8]
   (`globus-url-copy -tcp-bs`)
 
-**GRIDFTP_BLOCKSIZE=150000**
+**GRIDFTP_BLOCKSIZE=131072**
 
   >Specifies the size (in bytes) of the buffer to be used by the
   underlying transfer methods.

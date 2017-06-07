@@ -37,12 +37,11 @@ SERVER_RAMDISK=/dev/shm
 # Command to run GridFTP, relative from current directory.
 GLOBUS_COMMAND=globus-url-copy
 
-# Performance tuning, see http://globus.org/toolkit/data/gridftp/faq.html
+# Performance tuning, see http://toolkit.globus.org/toolkit/docs/latest-stable/gridftp/#gridftp
 STREAMS=1
 # [TCP Buffer size (bytes) = 1024 * Bandwidth (Mbs) * Round trip delay time(ms) / 8]
-#TCP_BUFFERSIZE=1048576
-TCP_BUFFERSIZE=179200
-GRIDFTP_BLOCKSIZE=150000
+TCP_BUFFERSIZE=1048576
+GRIDFTP_BLOCKSIZE=131072
 GLOBUS_PARAMETERS="-p $STREAMS -tcp-bs $TCP_BUFFERSIZE -bs $GRIDFTP_BLOCKSIZE"
 
 # Properties of the files to test with.
