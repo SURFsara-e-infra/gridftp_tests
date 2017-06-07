@@ -23,7 +23,7 @@ to a different gridftp server.
 The <u>gridftp.sh</u> script will run the gridftp daemon on a non-priviledged port 
 (5000) so there is no need to run the daemon as root. 
 
-We have tested this software on x86_64 architectures running CentOS 6.4 and 7.3.
+We have tested this software on x86_64 architectures running CentOS 7.3.
 
 Please refer to the document "Acceptance Tests" for
 additional information.
@@ -35,6 +35,8 @@ Installation
 The gridftp software can be installed by running:
 
 `./gridftp.sh install`
+
+The port **5000** and port range **20000-25000** should be open for incoming traffic. All outgoing traffic should be allowed.
 
 
 

@@ -6,7 +6,7 @@ tb=1099511627776
 
 read=`tail -n 1 test_results_read* | grep Through | awk '{print $6}' | paste -s -d + - | bc`
 write=`tail -n 1 test_results_write* | grep Through | awk '{print $6}' | paste -s -d + - | bc`
-tera_bytes=`df -B${tb} ${STORAGE_PATH} | grep -E '[0-9]+%' | awk '{print $1}'`
+tera_bytes=`df -B${tb} ${STORAGE_PATH} | grep -E '[0-9]+%' | awk '{print $2}'`
 
 echo ${read}" MiB/s read"
 echo ${write}" MiB/s written"

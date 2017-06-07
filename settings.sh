@@ -16,6 +16,8 @@ USER=
 #The stuff below you can leave as is.
 #----------------------------------------------------
 
+export GLOBUS_TCP_PORT_RANGE=20000,25000
+
 if [ -z ${REMOTE_SERVER} ]; then
     echo "Please specify REMOTE_SERVER in settings.sh"
     exit 1
