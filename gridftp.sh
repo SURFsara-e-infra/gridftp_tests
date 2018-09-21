@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CURDIR=`pwd`
-REPORPM=`cd ${CURDIR}; ls glob*rpm`
+REPORPM="globus-toolkit-repo-latest.noarch.rpm"
 
 clean () {
     stop
@@ -29,6 +29,7 @@ install () {
     cd $CURDIR
     clean
 
+    curl https://downloads.globus.org/toolkit/gt6/stable/installers/repo/rpm/${REPORPM} -o ${REPORPM}
   
     rpm -i --force ${REPORPM}
     
