@@ -23,6 +23,7 @@ clean () {
 
     rm -f ${CURDIR}/setenv.sh
     rm -f ${CURDIR}/*.txt
+    rm -f ${CURDIR}/${REPORPM}
 }
 
 install () {
